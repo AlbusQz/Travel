@@ -1,0 +1,332 @@
+create tablespace "TRAVEL"
+datafile 'D:\oracle\TRAVEL.dbf' size 500m
+autoextend on next 100 maxsize 1000m
+segment space management auto
+extent management local;
+
+create user traveltest 
+identified by travel
+default tablespace Travel;
+
+grant connect,resource to traveltest;
+grant dba to traveltest;
+
+create table Person(
+	ID      number(18) constraint pk_person_id primary key constraint nn_person_id not null,
+	name      varchar(20) constraint nn_person_name not null,
+	sex      char(2) constraint nn_person_sex not null,
+	bday      date constraint nn_person_bday not null,
+	type      varchar(20) constraint nn_person_type not null
+	);
+comment on table Person is '人表';
+comment on column Person.ID is '身份证号';
+comment on column Person.name is '姓名';
+comment on column Person.sex is '性别';
+comment on column Person.bday is '出生日期';
+comment on column Person.type is '证件类型';
+
+
+create table City (
+	name      varchar(20) constraint nn_city_name not null constraint pk_city_name primary key
+	);
+comment on table City is '城市表';
+comment on column City.name is '城市名';
+
+create table Customer (
+	ID        number(10) constraint nn_customer_id not null,
+	name       varchar(20) constraint nn_customer_name not null,
+	password        varchar(20) constraint nn_customer_password not null, 
+	tel       number(11),
+	email        varchar(32),
+	person_ID        number(18) constraint nn_customer_personID not null,    
+	constraint pk_customer_id primary key(ID),
+	constraint fk_customer_personID foreign key(person_ID) References Person (ID)
+	);
+comment on table Customer is '用户表';
+comment on column Customer.ID is '用户ID';
+comment on column Customer.name is '用户昵称';
+comment on column Customer.password is '用户密码';
+comment on column Customer.tel is '用户手机号';
+comment on column Customer.email is '用户邮箱';
+comment on column Customer.person_ID is '用户身份证号';
+
+create table Staff (
+	ID        number(10) constraint nn_staff_id not null,
+	password        varchar(20) constraint nn_staff_password not null, 
+	tel       number(11) constraint nn_staff_tel not null,
+	person_ID        number(18) constraint nn_staff_personID not null,    
+	constraint pk_staff_id primary key(ID),
+	constraint fk_staff_personID foreign key(person_ID) References Person (ID)
+	);
+comment on table Staff is '员工表';
+comment on column Staff.ID is '员工ID';
+comment on column Staff.password is '员工密码';
+comment on column Staff.tel is '员工手机号';
+comment on column Staff.person_ID is '员工身份证号';
+
+create table Train_Station (
+	name varchar(20) constraint nn_trainstation_name not null,
+	city varchar(20) constraint nn_trainstation_city not null,
+	lat number constraint nn_trainstation_lat not null,
+	lon number constraint nn_trainstation_lon not null,
+	constraint pk_trainstation_name primary key(name),
+	constraint ck_trainstation_lat Check(lat between -90 and 90),
+	constraint ck_trainstation_lon Check(lon between -180 and 180),	
+	constraint fk_trainstation_city foreign key(city) References City (name)
+	);
+comment on table Train_Station is '火车站表';
+comment on column Train_Station.name is '火车站名';
+comment on column Train_Station.city is '火车站城市';
+comment on column Train_Station.lat is '火车站纬度';
+comment on column Train_Station.lon is '火车站经度';
+
+create table Airport (
+	name varchar(20) constraint nn_airport_name not null,
+	city varchar(20) constraint nn_airport_city not null,
+	lat number constraint nn_airport_lat not null,
+	lon number constraint nn_airport_lon not null,
+	constraint pk_airport_name primary key(name),
+	constraint ck_airport_lat Check(lat between -90 and 90),
+	constraint ck_airport_lon Check(lon between -180 and 180),	
+	constraint fk_airport_city foreign key(city) References City (name)
+	);
+comment on table Airport is '机场表';
+comment on column Airport.name is '机场名';
+comment on column Airport.city is '机场城市';
+comment on column Airport.lat is '机场纬度';
+comment on column Airport.lon is '机场经度';
+
+create table Hotel (
+	ID number(10) constraint nn_hotel_id not null,
+	name varchar(20) constraint nn_hotel_name not null,
+	city varchar(20) constraint nn_hotel_city not null,
+	lat number constraint nn_hotel_lat not null,
+	lon number constraint nn_hotel_lon not null,
+	capacity number,
+	constraint pk_hotel_name primary key(ID),
+	constraint ck_hotel_lat Check(lat between -90 and 90),
+	constraint ck_hotel_lon Check(lon between -180 and 180),	
+	constraint fk_hotel_city foreign key(city) References City (name)
+	);
+comment on table Hotel is '酒店表';
+comment on column Hotel.ID is '酒店ID';
+comment on column Hotel.name is '酒店名';
+comment on column Hotel.city is '酒店城市';
+comment on column Hotel.lat is '酒店纬度';
+comment on column Hotel.lon is '酒店经度';
+comment on column Hotel.capacity is '酒店容量';
+
+create table Scenic (
+	name varchar(20) constraint nn_scenic_name not null,
+	city varchar(20) constraint nn_scenic_city not null,
+	lat number constraint nn_scenic_lat not null,
+	lon number constraint nn_scenic_lon not null,
+	capacity number,
+	price number,
+	constraint pk_scenic_name primary key(name,city),
+	constraint ck_scenic_lat Check(lat between -90 and 90),
+	constraint ck_scenic_lon Check(lon between -180 and 180),	
+	constraint fk_scenic_city foreign key(city) References City (name)
+	);
+comment on table Scenic is '景点表';
+comment on column Scenic.name is '景点名';
+comment on column Scenic.city is '景点城市';
+comment on column Scenic.lat is '景点纬度';
+comment on column Scenic.lon is '景点经度';
+comment on column Scenic.capacity is '景点容量';
+comment on column Scenic.price is '景点价格';
+
+create table Plane (
+	ID varchar(20) constraint nn_plane_id not null,
+	t_time date constraint nn_plane_ttime not null,
+	t_airport varchar(20) constraint nn_plane_tairport not null,
+	r_time number constraint nn_plane_rtime not null,
+	a_airport varchar(20) constraint nn_plane_aairport not null,
+	mileage number,
+	capacity number,
+	price number,
+	type varchar(20),
+	constraint pk_plane primary key(ID,t_time,t_airport),
+	constraint fk_plane_tairport foreign key(t_airport) References Airport (name),
+	constraint fk_plane_aairport foreign key(a_airport) References Airport (name)
+	);
+comment on table Plane is '航班表';
+comment on column Plane.ID is '航班号';
+comment on column Plane.t_time is '航班起飞时间';
+comment on column Plane.t_airport is '航班起飞机场';
+comment on column Plane.r_time is '航班预计飞行时间';
+comment on column Plane.a_airport is '航班到达机场';
+comment on column Plane.mileage is '航班里程';
+comment on column Plane.capacity is '航班容量';
+comment on column Plane.price is '航班价格';
+comment on column Plane.type is '航班型号';
+
+create table Train (
+	ID varchar(20) constraint nn_train_id not null,
+	t_station varchar(20),
+	a_station varchar(20),
+	capacity number,
+	price number,
+	type varchar(20),
+	constraint pk_train_id primary key(ID),
+	constraint fk_train_tstation foreign key(t_station) References Train_Station (name),
+	constraint fk_train_astation foreign key(a_station) References Train_Station (name)
+	);
+comment on table Train is '火车表';
+comment on column Train.ID is '列车车次号';
+comment on column Train.t_station is '火车出发站点';
+comment on column Train.a_station is '火车到达站点';
+comment on column Train.capacity is '火车容量';
+comment on column Train.price is '火车价格';
+comment on column Train.type is '火车种类';
+
+create table p_ticket(
+	ID varchar(20) constraint nn_pticket_id not null,
+	person_ID number(18) constraint nn_pticket_personID not null,
+	p_ID varchar(20) constraint nn_pticket_pid not null,
+	t_time date constraint nn_pticket_ttime not null,
+	t_airport varchar(20) constraint nn_ptickey_tairport not null,   
+	type varchar(20),
+	seat varchar(20),
+	constraint pk_pticket_id primary key(ID),
+	constraint fk_pticket_personid foreign key(person_ID) References Person (ID),
+	constraint fk_pticket_plane foreign key(p_ID,t_time,t_airport) References Plane(ID,t_time,t_airport)
+	);
+comment on table P_ticket is '机票表';
+comment on column P_ticket.ID is '机票序列号';
+comment on column P_ticket.person_ID is '机票购买者身份证号';
+comment on column P_ticket.p_ID is '机票航班号';
+comment on column P_ticket.t_time is '机票航班起飞时间';
+comment on column P_ticket.t_airport is '机票航班起飞机场';
+comment on column P_ticket.type is '机票类型';
+comment on column P_ticket.seat is '机票座位号';
+
+create table Train_stop(
+	train_ID varchar(20) constraint nn_trainstop_trainID not null,
+	stop_ID number(10) constraint nn_trainstop_stopID not null,
+	station varchar(20) constraint nn_trainstop_station not null,
+	r_time number constraint nn_trainstop_rtime not null,
+	s_time number constraint nn_trainstop_stime not null,   
+	mileage number,
+	constraint pk_trainstop_id primary key(train_ID,stop_ID),
+	constraint fk_trainstop_trainid foreign key(train_ID) References Train (ID),
+	constraint fk_trainstop_station foreign key(station) References Train_Station(name)
+);
+comment on table Train_stop is '火车经停站表';
+comment on column Train_stop.train_ID is '火车经停列车车次号';
+comment on column Train_stop.stop_ID is '火车经停站ID';
+comment on column Train_stop.station is '火车经停站点';
+comment on column Train_stop.r_time is '火车经停站行驶时间';
+comment on column Train_stop.s_time is '火车经停站停留时间';
+comment on column Train_stop.mileage is '火车经停站里程';
+
+create table T_ticket(
+	ID varchar(20) constraint nn_tticket_id not null,
+	person_ID number(18) constraint nn_tticket_personID not null,
+	train_ID varchar(20) constraint nn_tticket_trainid not null,
+	t_stop number(10) constraint nn_tticket_tstop not null,
+	a_stop number(10) constraint nn_aticket_tstop not null,
+	t_time date constraint nn_tticket_ttime not null,
+	a_time date constraint nn_tticket_atime not null,   
+	type varchar(20),
+	seat varchar(20),
+	constraint pk_tticket_id primary key(ID),
+	constraint fk_tticket_personid foreign key(person_ID) References Person (ID),
+	constraint fk_tticket_tstop foreign key(train_ID,t_stop) References Train_stop(train_ID,stop_ID),
+	constraint fk_tticket_astop foreign key(train_ID,a_stop) References Train_stop(train_ID,stop_ID)
+	);
+comment on table T_ticket is '火车票表';
+comment on column T_ticket.ID is '火车票序列号';
+comment on column T_ticket.person_ID is '火车票购买者身份证号';
+comment on column T_ticket.train_ID is '火车票列车号';
+comment on column T_ticket.t_stop is '火车票出发站点';
+comment on column T_ticket.a_stop is '火车票到达站点';
+comment on column T_ticket.t_time is '火车票出发时间';
+comment on column T_ticket.a_time is '火车票到达机场';
+comment on column T_ticket.type is '火车票类型';
+comment on column T_ticket.seat is '火车票座位号';
+
+create table Ticket(
+	ID varchar(20) constraint nn_ticket_id not null,
+	person_ID number(18) constraint nn_ticket_personID not null,
+	scenic varchar(20) constraint nn_ticket_scenic not null,
+	city varchar(20) constraint nn_ticket_city not null,
+	time date ,
+	type varchar(20),
+	constraint pk_ticket_id primary key(ID),
+	constraint fk_ticket_personid foreign key(person_ID) References Person (ID),
+	constraint fk_ticket_scenic foreign key(scenic,city) References Scenic(name,city)
+	);
+comment on table Ticket is '门票表';
+comment on column Ticket.ID is '门票序列号';
+comment on column Ticket.person_ID is '门票购买者身份证号';
+comment on column Ticket.scenic is '门票景点名称';
+comment on column Ticket.city is '门票景点城市';
+comment on column Ticket.time is '门票时间';
+comment on column Ticket.type is '门票类型';
+
+create table Pt_history(
+	Customer number(10) constraint nn_pthistory_customer not null,
+	pticketID varchar(20) constraint nn_pthistory_pticket not null,
+	time date,
+	price number,
+	constraint pk_pkhistory_id primary key(Customer,pticketID),
+	constraint fk_pkhistory_customer foreign key(Customer) References Customer (ID),
+	constraint fk_pkhistory_pticket foreign key(pticketID) References P_ticket (ID)
+	);
+comment on table Pt_history is '机票购买记录表';
+comment on column Pt_history.Customer is '机票购买记录顾客ID';
+comment on column Pt_history.pticketID is '机票购买记录航班号';
+comment on column Pt_history.time is '机票购买记录时间';
+comment on column Pt_history.price is '机票购买记录时间';
+
+create table Tt_history(
+	Customer number(10) constraint nn_tthistory_customer not null,
+	tticketID varchar(20) constraint nn_tthistory_pticket not null,
+	time date,
+	price number,
+	constraint pk_tthistory_id primary key(Customer,tticketID),
+	constraint fk_tthistory_customer foreign key(Customer) References Customer (ID),
+	constraint fk_tthistory_pticket foreign key(tticketID) References T_ticket (ID)
+	);
+comment on table Tt_history is '火车票购买记录表';
+comment on column Tt_history.Customer is '火车票购买记录顾客ID';
+comment on column Tt_history.pticketID is '火车票购买记录航班号';
+comment on column Tt_history.time is '火车票购买记录时间';
+comment on column Tt_history.price is '火车票购买记录时间';
+
+create table T_history(
+	Customer number(10) constraint nn_thistory_customer not null,
+	ticketID varchar(20) constraint nn_thistory_pticket not null,
+	time date,
+	price number,
+	constraint pk_thistory_id primary key(Customer,ticketID),
+	constraint fk_thistory_customer foreign key(Customer) References Customer (ID),
+	constraint fk_thistory_pticket foreign key(ticketID) References Ticket (ID)
+	);
+comment on table T_history is '门票购买记录表';
+comment on column T_history.Customer is '门票购买记录顾客ID';
+comment on column T_history.ticketID is '门票购买记录航班号';
+comment on column T_history.time is '门票购买记录时间';
+comment on column T_history.price is '门票购买记录时间';
+
+create table H_history(
+	Customer number(10) constraint nn_hhistory_customer not null,
+	HotelID number(10) constraint nn_hhistory_hotel not null,
+	buy_time date constraint nn_hhistory_buytime not null,
+	in_time date,
+	out_time date,
+	price number,
+	type varchar(20),
+	constraint pk_hhistory primary key(Customer,HotelID,buy_time),
+	constraint fk_hhistory_customer foreign key(Customer) References Customer (ID),
+	constraint fk_hhistory_pticket foreign key(HotelID) References Hotel (ID)
+	);
+comment on table H_history is '酒店预订记录表';
+comment on column H_history.Customer is '酒店预订记录顾客ID';
+comment on column T_history.HotelID is '酒店预订记录酒店ID';
+comment on column H_history.buy_time is '酒店预订记录预订时间';
+comment on column H_history.in_time is '酒店预订记录入住时间';
+comment on column H_history.out_time is '酒店预订记录退房时间';
+comment on column H_history.price is '酒店预订记录价格';
+comment on column H_history.type is '酒店预订记录房间类型';
