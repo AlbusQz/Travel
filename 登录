@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+    .body
+    {
+        font: 12px/1.5 PingFangSC-Regular,"Microsoft YaHei",SimSun,Tahoma,Verdana,Arial,sans-serif;
+        color: #666;
+        background-color: #FFF;
+    }
+    .rect
+    {
+        position: relative;
+        float: right;
+        width: 380px;
+        margin-right: 72px;
+        margin-top: 100px;
+    }
+    .login
+    {
+        /* margin-right: 72px; */
+
+        position:relative;
+        left: 40px;
+
+        font-size: 18px;
+        color: #111;
+        line-height: 1;
+        padding-bottom: 16px;
+        font-family: PingFangSC-Medium,"Microsoft Yahei",SimSun,Tahoma,Verdana,Arial,sans-serif;
+    }
+
+    dl
+    {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+
+    .input1
+    {
+        position: relative;
+        width: 320px;
+        height: 40px;
+        padding: 5px 5px 5px 13px;
+        line-height: 28px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        color: #333;
+        display: inline-block;
+        vertical-align: middle;
+        
+    }
+
+    .input2
+    {
+        position: relative;
+        width: 320px;
+        height: 40px;
+        padding: 5px 5px 5px 13px;
+        line-height: 28px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        color: #333;
+        display: inline-block;
+        vertical-align: middle;
+        
+    }  
+    .form_btn
+    {
+        background-color: #ff9a14;
+        width: 220px;
+        height: 42px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        border: 0;
+        border-radius: 4px;
+        clear: both;
+    }
+
+    .form_btn--block
+    {
+        width: 100%;
+        position: relative;
+        top: 15px;
+    } 
+
+    .forgotpwd
+    {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 80px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 12px;
+        outline: 0;
+        outline-color: initial;
+        outline-style: initial;
+        outline-width: 0px;
+        color: #666;
+        text-decoration: none;
+        text-decoration-line: none;
+        text-decoration-thickness: initial;
+        text-decoration-style: initial;
+        text-decoration-color: initial;
+    }
+
+    .login-line
+    {
+        outline: 0;
+        outline-color: initial;
+        outline-style: initial;
+        outline-width: 0px;
+        color: #666;
+        text-decoration: none;
+        text-decoration-line: none;
+        text-decoration-thickness: initial;
+        text-decoration-style: initial;
+        text-decoration-color: initial;
+        position: relative;
+        /* margin-right: 20px; */
+        left: 220px;
+        top: 0px;
+    }
+    </style>
+
+</head>
+
+<body>
+    <div class="rect">
+        <div class="login">
+            携程账号登录
+        </div>
+        <div class="input" style>
+            <dl>
+                <dd>
+                    <input class="input1" type="text" placeholder="国内手机号/用户名/邮箱/卡号" >
+                </dd>
+            </dl>    
+            <dl>
+                <dd>
+                    <input class="input2" type="password" placeholder="登录密码" data-noneedeye>
+                    <a href="retrive1.html" class="forgotpwd" target="black">忘记密码</a>
+                </dd>
+            </dl>
+        </div>
+
+        <!-- <dl> -->
+            <dd>
+                <!-- <input class="form_btn form_btn--block" type="submit" value="登    录"> -->
+                <a href="mobilephonesecuritycodelogin.html" class="login-line">手机验证码登录</a>
+            </dd>
+
+            <dd>
+                <input class="form_btn form_btn--block" type="submit" value="登    录">
+            </dd>
+        <!-- </dl> -->
+
+        <!-- <div class="line" >
+            
+        </div> -->
+    </div>
+
+</body>
+</html>

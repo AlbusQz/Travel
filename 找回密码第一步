@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+    <style type="text/css">
+    .a3 span
+    {
+        display: inline-block;
+        margin-right: 5px;
+        width: 275px;
+        height: 5px;
+        line-height: 0;
+        background-color: #ddd;
+        border-radius: 3px;
+        vertical-align: middle;
+        overflow: hidden;
+    }
+    .a3 li.a4 span
+    {
+        background-color: #acd252;
+
+    }
+
+    .a3 li.a4
+    {
+        background-position: 260px -228px;
+        color: #799d08;
+    }
+    
+    .a3 li
+    {
+        float: left;
+        margin-left: 12px;
+        background-position: 260px -285px;
+        color: #9a9a9a;
+    }
+    .a6
+    {
+        float: left;
+        /* margin-right: 10px; */
+        width: 130px;
+        line-height: 36px;
+        font-size: 14px;
+        text-align: right;
+        position: relative;
+        top: 30px;
+        left: 0px;
+    }
+
+    .input1
+    {
+        position: relative;
+        width: 283px;
+        height: 28px;
+        display: inline-block;
+        line-height: 28px;
+        padding-left: 10px;
+        vertical-align: middle;
+        font-size: 14px;
+        color: #333;
+        border-color: #ccc;
+        top:30px;
+        left: 100px;
+        /* float: left; */
+        padding-right: 10px;
+        padding: 5px;
+        border: 1px solid #ddd;       
+    }
+
+    .a6
+    {
+        position: relative;
+        top: 30px;
+        left: 50px;
+    }
+
+    .a7
+    {
+        margin-bottom: 8px;
+        width: 220px;
+        height: 42px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        border: 0 none;
+        border-radius: 4px;
+        /* clear: both; */
+        background-color: #FF9A14;
+        position: relative;
+        top: 70px;
+        left: 100px;
+    }
+
+    </style>
+
+</head>
+<body>
+    <div class="a1">
+        <div class="a2">
+            <ul class="a3">
+                <!-- <li class="a4">
+                    <span></span>
+                    填写登录名
+                </li> -->
+                <!-- <li>
+                    <span></span>   
+                    验证
+                </li>
+                <li>
+                    <span></span>
+                    重置密码
+                </li>
+            </ul> -->
+        </div>
+    </div>
+    <div class="a6">登录名</div>
+    <form onsubmit="savaData(this)" action="retrive2.html">
+            <div> 
+                <input id="input_a" class="input1" type="text" placeholder="手机号/用户名/邮箱/卡号" >
+            </div>
+    </form>
+    <script src="https://g.csdnimg.cn/??lib/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        function saveData(f)
+        {
+            $('input[id]',f).each(function(){
+
+                localStorage.setItem(this.id,this.value);
+            })
+        }
+
+        function get()
+        {
+            alert(document.getElementById("input_a").value);
+        }
+    </script>    
+   <dd>
+      <input class="a7" type="submit" value="下一步，验证" onclick="get()"/> 
+   </dd>
+</body>
+</html>

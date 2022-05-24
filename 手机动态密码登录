@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .body
+        {
+            font: 12px/1.5 PingFangSC-Regular,"Microsoft YaHei",SimSun,Tahoma,Verdana,Arial,sans-serif;
+            color: #666;
+            background-color: #FFF;
+        }
+        .rect
+        {
+            position: relative;
+            float: right;
+            width: 380px;
+            margin-right: 100px;
+            margin-top: 100px;
+        }
+
+        .title
+        {
+            position:relative;
+            left: 40px;
+            font-size: 18px;
+            color: #111;
+            line-height: 1;
+            padding-bottom: 16px;
+            font-family: PingFangSC-Medium,"Microsoft Yahei",SimSun,Tahoma,Verdana,Arial,sans-serif;
+        }
+
+        .input1
+        {
+            position: relative;
+            width: 320px;
+            height: 40px;
+            padding: 5px 5px 5px 13px;
+            line-height: 28px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            color: #333;
+            display: inline-block;
+            vertical-align: middle;
+
+        }
+
+        .input2
+        {
+            position: relative;
+            width: 320px;
+            height: 40px;
+            padding: 5px 5px 5px 13px;
+            line-height: 28px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            color: #333;
+            display: inline-block;
+            vertical-align: middle;
+            
+        } 
+        .forgotpwd
+        {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 12px;
+            outline: 0;
+            outline-color: initial;
+            outline-style: initial;
+            outline-width: 0px;
+            color: #666;
+            text-decoration: none;
+            text-decoration-line: none;
+            text-decoration-thickness: initial;
+            text-decoration-style: initial;
+            text-decoration-color: initial;
+        }
+
+        .form_btn
+        {
+            background-color: #ff9a14;
+            width: 220px;
+            height: 42px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border: 0;
+            border-radius: 4px;
+            clear: both;
+        }
+
+        .form_btn--block
+        {
+            width: 100%;
+            position: relative;
+            top: 15px;
+        } 
+
+    </style>
+</head>
+
+<body>
+    <div class="rect">
+        <div class="title">   
+            手机动态密码登录
+        </div>
+
+        <div class="input" style>
+            <dl>
+                <dd>
+                    <input class="input1" type="text" placeholder="注册或绑定手机号" >
+                </dd>
+            </dl>    
+            <dl>
+                <dd>
+                    <input class="input2" type="text" placeholder="短信动态码" >
+                    <a href="" class="forgotpwd" target="black">发送动态码</a>
+                </dd>
+            </dl>
+        </div>   
+        
+        <dd>
+            <input class="form_btn form_btn--block" type="submit" value="登    录">
+        </dd>
+
+    </div>
+
+</body>
+</html>
