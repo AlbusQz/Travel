@@ -2,6 +2,8 @@ package entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,29 +20,29 @@ public class City implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String name;
 
-	//bi-directional many-to-one association to Ticket
-	@OneToMany(mappedBy="city1")
-	private List<Ticket> tickets1;
-
-	//bi-directional many-to-one association to Ticket
-	@OneToMany(mappedBy="city2")
-	private List<Ticket> tickets2;
-
 	//bi-directional many-to-one association to Hotel
-	@OneToMany(mappedBy="cityBean")
-	private List<Hotel> hotels;
+	@OneToMany(mappedBy="city")
+	private List<Hotel> hotels = new ArrayList<Hotel>();
+
+	//bi-directional many-to-one association to Line
+	@OneToMany(mappedBy="tcity")
+	private List<Line> tlines=new ArrayList<Line>();
+
+	//bi-directional one-to-one association to Line
+	@OneToMany(mappedBy="rcity")
+	private List<Line> rlines=new ArrayList<Line>();
 
 	//bi-directional many-to-one association to Scenic
-	@OneToMany(mappedBy="cityBean")
-	private List<Scenic> scenics;
+	@OneToMany(mappedBy="city")
+	private List<Scenic> scenics = new ArrayList<Scenic>();
 
-	//bi-directional many-to-one association to Line
-	@OneToMany(mappedBy="city1")
-	private List<Line> lines1;
+	//bi-directional many-to-one association to Ticket
+	@OneToMany(mappedBy="tcity")
+	private List<Ticket> ttickets= new ArrayList<Ticket>();
 
-	//bi-directional many-to-one association to Line
-	@OneToMany(mappedBy="city2")
-	private List<Line> lines2;
+	//bi-directional many-to-one association to Ticket
+	@OneToMany(mappedBy="rcity")
+	private List<Ticket> rtickets = new ArrayList<Ticket>();
 
 	public City() {
 	}
@@ -53,50 +55,6 @@ public class City implements Serializable {
 		this.name = name;
 	}
 
-	public List<Ticket> getTickets1() {
-		return this.tickets1;
-	}
-
-	public void setTickets1(List<Ticket> tickets1) {
-		this.tickets1 = tickets1;
-	}
-
-	public Ticket addTickets1(Ticket tickets1) {
-		getTickets1().add(tickets1);
-		tickets1.setCity1(this);
-
-		return tickets1;
-	}
-
-	public Ticket removeTickets1(Ticket tickets1) {
-		getTickets1().remove(tickets1);
-		tickets1.setCity1(null);
-
-		return tickets1;
-	}
-
-	public List<Ticket> getTickets2() {
-		return this.tickets2;
-	}
-
-	public void setTickets2(List<Ticket> tickets2) {
-		this.tickets2 = tickets2;
-	}
-
-	public Ticket addTickets2(Ticket tickets2) {
-		getTickets2().add(tickets2);
-		tickets2.setCity2(this);
-
-		return tickets2;
-	}
-
-	public Ticket removeTickets2(Ticket tickets2) {
-		getTickets2().remove(tickets2);
-		tickets2.setCity2(null);
-
-		return tickets2;
-	}
-
 	public List<Hotel> getHotels() {
 		return this.hotels;
 	}
@@ -107,17 +65,62 @@ public class City implements Serializable {
 
 	public Hotel addHotel(Hotel hotel) {
 		getHotels().add(hotel);
-		hotel.setCityBean(this);
+		hotel.setCity(this);
 
 		return hotel;
 	}
 
 	public Hotel removeHotel(Hotel hotel) {
 		getHotels().remove(hotel);
-		hotel.setCityBean(null);
+		hotel.setCity(null);
 
 		return hotel;
 	}
+
+	public List<Line> getTLines() {
+		return this.tlines;
+	}
+
+	public void setTLines(List<Line> lines) {
+		this.tlines = lines;
+	}
+
+	public Line addTLine(Line line) {
+		getTLines().add(line);
+		line.setTcity(this);
+
+		return line;
+	}
+
+	public Line removeTLine(Line line) {
+		getTLines().remove(line);
+		line.setTcity(null);
+
+		return line;
+	}
+
+	public List<Line> getRLines() {
+		return this.rlines;
+	}
+
+	public void setRLines(List<Line> lines) {
+		this.rlines = lines;
+	}
+
+	public Line addRLine(Line line) {
+		getRLines().add(line);
+		line.setRcity(this);
+
+		return line;
+	}
+
+	public Line removeRLine(Line line) {
+		getRLines().remove(line);
+		line.setRcity(null);
+
+		return line;
+	}
+
 
 	public List<Scenic> getScenics() {
 		return this.scenics;
@@ -129,60 +132,60 @@ public class City implements Serializable {
 
 	public Scenic addScenic(Scenic scenic) {
 		getScenics().add(scenic);
-		scenic.setCityBean(this);
+		scenic.setCity(this);
 
 		return scenic;
 	}
 
 	public Scenic removeScenic(Scenic scenic) {
 		getScenics().remove(scenic);
-		scenic.setCityBean(null);
+		scenic.setCity(null);
 
 		return scenic;
 	}
 
-	public List<Line> getLines1() {
-		return this.lines1;
+	public List<Ticket> getTTickets() {
+		return this.ttickets;
 	}
 
-	public void setLines1(List<Line> lines1) {
-		this.lines1 = lines1;
+	public void setTTickets(List<Ticket> tickets1) {
+		this.ttickets = tickets1;
 	}
 
-	public Line addLines1(Line lines1) {
-		getLines1().add(lines1);
-		lines1.setCity1(this);
+	public Ticket addTTickets(Ticket tickets1) {
+		getTTickets().add(tickets1);
+		tickets1.setTcity(this);
 
-		return lines1;
+		return tickets1;
 	}
 
-	public Line removeLines1(Line lines1) {
-		getLines1().remove(lines1);
-		lines1.setCity1(null);
+	public Ticket removeTickets1(Ticket tickets1) {
+		getTTickets().remove(tickets1);
+		tickets1.setTcity(null);
 
-		return lines1;
+		return tickets1;
 	}
 
-	public List<Line> getLines2() {
-		return this.lines2;
+	public List<Ticket> getRTickets() {
+		return this.rtickets;
 	}
 
-	public void setLines2(List<Line> lines2) {
-		this.lines2 = lines2;
+	public void setRTickets(List<Ticket> tickets2) {
+		this.rtickets = tickets2;
 	}
 
-	public Line addLines2(Line lines2) {
-		getLines2().add(lines2);
-		lines2.setCity2(this);
+	public Ticket addRTickets(Ticket tickets2) {
+		getRTickets().add(tickets2);
+		tickets2.setRcity(this);
 
-		return lines2;
+		return tickets2;
 	}
 
-	public Line removeLines2(Line lines2) {
-		getLines2().remove(lines2);
-		lines2.setCity2(null);
+	public Ticket removeRTickets(Ticket tickets2) {
+		getRTickets().remove(tickets2);
+		tickets2.setRcity(null);
 
-		return lines2;
+		return tickets2;
 	}
 
 }

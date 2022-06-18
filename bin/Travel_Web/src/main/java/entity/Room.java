@@ -14,12 +14,16 @@ import java.math.BigDecimal;
 public class Room implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private RoomPK id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
 
 	private BigDecimal capacity;
 
 	private BigDecimal price;
+
+	@Column(name="\"TYPE\"")
+	private String type;
 
 	//bi-directional many-to-one association to Hotel
 	@ManyToOne
@@ -29,11 +33,11 @@ public class Room implements Serializable {
 	public Room() {
 	}
 
-	public RoomPK getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(RoomPK id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -51,6 +55,14 @@ public class Room implements Serializable {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	public String getType() {
+		return this.type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public Hotel getHotel() {

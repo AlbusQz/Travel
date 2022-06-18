@@ -9,9 +9,7 @@
 		<class>entity.Line</class>
 		<class>entity.Person</class>
 		<class>entity.Room</class>
-		<class>entity.RoomPK</class>
 		<class>entity.Scenic</class>
-		<class>entity.ScenicPK</class>
 		<class>entity.Staff</class>
 		<class>entity.Ticket</class>
 		<class>entity.Tip</class>

@@ -14,13 +14,16 @@ import java.math.BigDecimal;
 public class Scenic implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private ScenicPK id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
 
 	private BigDecimal capacity;
 
 	@Lob
 	private String intro;
+
+	private String name;
 
 	private BigDecimal price;
 
@@ -29,16 +32,16 @@ public class Scenic implements Serializable {
 	//bi-directional many-to-one association to City
 	@ManyToOne
 	@JoinColumn(name="CITY")
-	private City cityBean;
+	private City city;
 
 	public Scenic() {
 	}
 
-	public ScenicPK getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(ScenicPK id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -58,6 +61,14 @@ public class Scenic implements Serializable {
 		this.intro = intro;
 	}
 
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public BigDecimal getPrice() {
 		return this.price;
 	}
@@ -74,12 +85,12 @@ public class Scenic implements Serializable {
 		this.stars = stars;
 	}
 
-	public City getCityBean() {
-		return this.cityBean;
+	public City getCity() {
+		return this.city;
 	}
 
-	public void setCityBean(City cityBean) {
-		this.cityBean = cityBean;
+	public void setCity(City city) {
+		this.city = city;
 	}
 
 }

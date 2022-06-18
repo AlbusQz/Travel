@@ -39,12 +39,12 @@ public class Line implements Serializable {
 	//bi-directional many-to-one association to City
 	@ManyToOne
 	@JoinColumn(name="T_CITY")
-	private City city1;
+	private City tcity;
 
-	//bi-directional many-to-one association to City
-	@ManyToOne
+	//bi-directional one-to-one association to City
+	@OneToOne
 	@JoinColumn(name="R_CITY")
-	private City city2;
+	private City rcity;
 
 	public Line() {
 	}
@@ -105,20 +105,20 @@ public class Line implements Serializable {
 		this.tTime = tTime;
 	}
 
-	public City getCity1() {
-		return this.city1;
+	public City getTcity() {
+		return this.tcity;
 	}
 
-	public void setCity1(City city1) {
-		this.city1 = city1;
+	public void setTcity(City tcity) {
+		this.tcity = tcity;
 	}
 
-	public City getCity2() {
-		return this.city2;
+	public City getRcity() {
+		return this.rcity;
 	}
 
-	public void setCity2(City city2) {
-		this.city2 = city2;
+	public void setRcity(City rcity) {
+		this.rcity = rcity;
 	}
 
 }

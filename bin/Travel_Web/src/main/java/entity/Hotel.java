@@ -29,7 +29,7 @@ public class Hotel implements Serializable {
 	//bi-directional many-to-one association to City
 	@ManyToOne
 	@JoinColumn(name="CITY")
-	private City cityBean;
+	private City city;
 
 	//bi-directional many-to-one association to Room
 	@OneToMany(mappedBy="hotel")
@@ -70,12 +70,12 @@ public class Hotel implements Serializable {
 		this.tel = tel;
 	}
 
-	public City getCityBean() {
-		return this.cityBean;
+	public City getCity() {
+		return this.city;
 	}
 
-	public void setCityBean(City cityBean) {
-		this.cityBean = cityBean;
+	public void setCity(City city) {
+		this.city = city;
 	}
 
 	public List<Room> getRooms() {

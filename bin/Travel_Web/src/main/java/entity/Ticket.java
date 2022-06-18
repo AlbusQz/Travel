@@ -23,9 +23,6 @@ public class Ticket implements Serializable {
 
 	private BigDecimal price;
 
-	@Column(name="R_CITY")
-	private String rCity;
-
 	@Temporal(TemporalType.DATE)
 	@Column(name="R_TIME")
 	private Date rTime;
@@ -40,12 +37,12 @@ public class Ticket implements Serializable {
 	//bi-directional many-to-one association to City
 	@ManyToOne
 	@JoinColumn(name="T_CITY")
-	private City city1;
+	private City tcity;
 
 	//bi-directional many-to-one association to City
 	@ManyToOne
-	@JoinColumn(name="T_CITY")
-	private City city2;
+	@JoinColumn(name="R_CITY")
+	private City rcity;
 
 	public Ticket() {
 	}
@@ -74,14 +71,6 @@ public class Ticket implements Serializable {
 		this.price = price;
 	}
 
-	public String getRCity() {
-		return this.rCity;
-	}
-
-	public void setRCity(String rCity) {
-		this.rCity = rCity;
-	}
-
 	public Date getRTime() {
 		return this.rTime;
 	}
@@ -106,20 +95,20 @@ public class Ticket implements Serializable {
 		this.type = type;
 	}
 
-	public City getCity1() {
-		return this.city1;
+	public City getTcity() {
+		return this.tcity;
 	}
 
-	public void setCity1(City city1) {
-		this.city1 = city1;
+	public void setTcity(City tcity) {
+		this.tcity = tcity;
 	}
 
-	public City getCity2() {
-		return this.city2;
+	public City getRcity() {
+		return this.rcity;
 	}
 
-	public void setCity2(City city2) {
-		this.city2 = city2;
+	public void setRcity(City rcity) {
+		this.rcity = rcity;
 	}
 
 }

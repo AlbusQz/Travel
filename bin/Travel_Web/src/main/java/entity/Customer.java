@@ -3,6 +3,7 @@ package entity;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -35,13 +36,13 @@ public class Customer implements Serializable {
 	@OneToOne(cascade={CascadeType.ALL})
 	private Person person;
 
-	//bi-directional many-to-one association to Tip
-	@OneToMany(mappedBy="customer")
-	private List<Tip> tips;
-
 	//bi-directional many-to-one association to History
 	@OneToMany(mappedBy="customer")
-	private List<History> histories;
+	private List<History> histories = new ArrayList<History>();
+
+	//bi-directional many-to-one association to Tip
+	@OneToMany(mappedBy="customer")
+	private List<Tip> tips = new ArrayList<Tip>();
 
 	public Customer() {
 	}
@@ -102,28 +103,6 @@ public class Customer implements Serializable {
 		this.person = person;
 	}
 
-	public List<Tip> getTips() {
-		return this.tips;
-	}
-
-	public void setTips(List<Tip> tips) {
-		this.tips = tips;
-	}
-
-	public Tip addTip(Tip tip) {
-		getTips().add(tip);
-		tip.setCustomer(this);
-
-		return tip;
-	}
-
-	public Tip removeTip(Tip tip) {
-		getTips().remove(tip);
-		tip.setCustomer(null);
-
-		return tip;
-	}
-
 	public List<History> getHistories() {
 		return this.histories;
 	}
@@ -144,6 +123,28 @@ public class Customer implements Serializable {
 		history.setCustomer(null);
 
 		return history;
+	}
+
+	public List<Tip> getTips() {
+		return this.tips;
+	}
+
+	public void setTips(List<Tip> tips) {
+		this.tips = tips;
+	}
+
+	public Tip addTip(Tip tip) {
+		getTips().add(tip);
+		tip.setCustomer(this);
+
+		return tip;
+	}
+
+	public Tip removeTip(Tip tip) {
+		getTips().remove(tip);
+		tip.setCustomer(null);
+
+		return tip;
 	}
 
 }
