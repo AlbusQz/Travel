@@ -74,14 +74,14 @@
             <div id="nav-holder">
                 <ul id="nav" class="sf-menu">
                     <li><a href="index.html">HOME</a></li>
-                    <li class="current_page_item"><a href="line.jsp">HOTEL</a></li>
-                    <li><a href="portfolio.html">SCENIC SPOT</a></li>
-                    <li ><a href="linelist">TICKET</a></li>
-                    <li><a href="strategy.html">STRATEGY</a></li>
-                    <li><a href="gallery.html">INSURANCE</a></li>
+                    <li ><a href="hotellist">HOTEL</a></li>
+                    <li><a href="sceniclist">SCENIC</a></li>
+                    <li ><a href="ticketlist">TICKET</a></li>
+                    <li class="current_page_item"><a href="linelist">LINE</a></li>
+                    <li><a href="tiplist">TIP</a></li>
+                    <li><a href="insurancelist">INSURANCE</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
-                    <li><a href="staff.html">STAFF</a></li>
-                    <li><a href="login.jsp">LOGIN</a></li>
+                     <li><a href="login.jsp">LOGIN</a></li>
                 </ul>
             </div>
             <!-- ENDS navigation -->

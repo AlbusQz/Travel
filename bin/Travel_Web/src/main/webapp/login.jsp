@@ -221,17 +221,16 @@
         <div class="wrapper">
             <a href="index.html"><img src="img/logo4.png" alt="Logo" id="logo" /></a>
             <div id="nav-holder">
-                <ul id="nav" class="sf-menu">
-                    <li ><a href="index.html">HOME</a></li>
-                    <li><a href="web/hotel.jsp">HOTEL</a>
-                    </li>
-                    <li><a href="portfolio.html">SCENIC SPOT</a></li>
-                    <li><a href="gallery.html">PLANE TICKET</a>
-                    </li>
-                    <li ><a href="blog.html">TRAIN TICKET</a></li>
-                     <li><a href="contact.html">CONTACT</a></li>
-                    <li><a href="staff.html">STAFF</a></li>
-                    <li class="current_page_item"><a href="login.jsp">LOGIN</a></li>
+               <ul id="nav" class="sf-menu">
+                    <li><a href="index.html">HOME</a></li>
+                    <li ><a href="hotellist">HOTEL</a></li>
+                    <li><a href="sceniclist">SCENIC</a></li>
+                    <li ><a href="ticketlist">TICKET</a></li>
+                    <li ><a href="linelist">LINE</a></li>
+                    <li><a href="tiplist">TIP</a></li>
+                    <li><a href="insurancelist">INSURANCE</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                      <li  class="current_page_item"><a href="login.jsp">LOGIN</a></li>
                 </ul>
             </div>
         </div>

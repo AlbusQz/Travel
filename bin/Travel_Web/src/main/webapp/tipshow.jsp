@@ -74,11 +74,12 @@
             <div id="nav-holder">
                 <ul id="nav" class="sf-menu">
                     <li><a href="index.html">HOME</a></li>
-                    <li class="current_page_item"><a href="tip.jsp">HOTEL</a></li>
-                    <li><a href="portfolio.html">SCENIC SPOT</a></li>
-                    <li ><a href="tiplist">TICKET</a></li>
-                    <li><a href="strategy.html">STRATEGY</a></li>
-                    <li><a href="gallery.html">INSURANCE</a></li>
+                    <li ><a href="hotellist">HOTEL</a></li>
+                    <li ><a href="sceniclist">SCENIC</a></li>
+                    <li ><a href="ticketlist">TICKET</a></li>
+                    <li ><a href="linelist">LINE</a></li>
+                    <li  class="current_page_item"><a href="tiplist">TIP</a></li>
+                    <li><a href="insurancelist">INSURANCE</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                     <li><a href="staff.html">STAFF</a></li>
                     <li><a href="login.jsp">LOGIN</a></li>
@@ -102,7 +103,7 @@
             <!-- POSTS -->
             <div id="posts" >
                 <!-- post -->
-                <div class="post"style="border-right: 3px solid #369;">
+               
                     <!-- post-header -->
                     <div class="post-header">
                         <div><b style="font-size: x-large;">旅游攻略</b></div>
@@ -126,8 +127,7 @@
 				
 
                   
-				
-                </div>
+			
 
             </div> 
          
@@ -142,8 +142,10 @@
   %>
   <br/>
   <br/>
+  <hr>
   <div style="text-align: right">
-   作者ID：<%
+   作者ID：
+   <%
   out.print(tip.getCustomer().getId());
   %>
    <br/>
@@ -151,6 +153,7 @@
    <%
   out.print(tip.getCtime().toString());
   %>
+  <br/><br/><br/>
   </div>
  
   </div>

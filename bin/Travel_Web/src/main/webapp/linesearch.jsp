@@ -65,18 +65,15 @@
 
             <!-- navigation -->
             <div id="nav-holder">
-                <ul id="nav" class="sf-menu">
+              <ul id="nav" class="sf-menu">
                     <li><a href="index.html">HOME</a></li>
-                    <li><a href="route.jsp">ROUTE</a></li>
-                    <li class="current_page_item" ><a href="linelist">HOTEL</a>
-                    </li>
-                    <li><a href="spot.jsp">SCENIC SPOT</a></li>
-                    <li ><a href="line.jsp">TICKET</a>
-                    </li>
-                    <li><a href="strategy.jsp">STRATEGY</a></li>
-                    <li><a href="insurance.jsp">INSURANCE</a></li>
+                    <li ><a href="hotellist">HOTEL</a></li>
+                    <li><a href="sceniclist">SCENIC</a></li>
+                    <li ><a href="ticketlist">TICKET</a></li>
+                    <li class="current_page_item"><a href="linelist">LINE</a></li>
+                    <li><a href="tiplist">TIP</a></li>
+                    <li><a href="insurancelist">INSURANCE</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
-                    <li><a href="staff.html">STAFF</a></li>
                     <li><a href="login.jsp">LOGIN</a></li>
                 </ul>
             </div>
@@ -117,7 +114,6 @@
 					Line temp=linelist.get(i);
 					out.print("<ul class='staff'>  <a href='lineshow?lineshowid="+i+"' > <li> ");
 					out.print("<img src='linepic"+i+"'/> ");
-					out.print("<img src='ticketpic"+i+"'/> ");
 					out.print("<div class='information'>"+temp.getTcity().getName()+"————>"+temp.getRcity().getName());
 					out.print(" <div class='header'>出发日期："+temp.getTTime().toString());
 					out.print(" <div class='contact'>到达时间："+temp.getRTime().toString());

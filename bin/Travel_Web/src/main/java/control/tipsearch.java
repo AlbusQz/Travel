@@ -17,7 +17,7 @@ import entity.Tip;
 /**
  * Servlet implementation class tipssearch
  */
-@WebServlet("/tipssearch")
+@WebServlet("/tipsearch")
 public class tipsearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

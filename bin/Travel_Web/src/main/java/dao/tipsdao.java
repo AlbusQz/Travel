@@ -35,7 +35,7 @@ public class tipsdao {
 
     public List<Tip> getTipList()
     {
-    	Query q = em.createQuery("select c from Tips c");
+    	Query q = em.createQuery("select c from Tip c");
     	q.setFirstResult(1);
     	int page=1;
     	q.setMaxResults(1+page);
@@ -49,7 +49,7 @@ public class tipsdao {
     }
     public List<Tip> getTipList(int page)
     {
-    	Query q = em.createQuery("select c from Tips c");
+    	Query q = em.createQuery("select c from Tip c");
     	q.setFirstResult(12);
     	q.setMaxResults(1+page);
     	List<Tip> out = new ArrayList<Tip>();
@@ -62,7 +62,7 @@ public class tipsdao {
     }
     public List<Tip> getTipList(int start,int page)
     {
-    	Query q = em.createQuery("select c from Tips c");
+    	Query q = em.createQuery("select c from Tip c");
     	q.setFirstResult(start);
     	q.setMaxResults(start+page);
     	List<Tip> out = new ArrayList<Tip>();
@@ -76,7 +76,7 @@ public class tipsdao {
     
     public List<Tip> getSearchTipList(String str)
     {
-    	String column="concat(T_CITY,CONCAT(C_ID,TEXT))";
+    	String column="CONCAT(C_ID,TEXT)";
     	String temp=tool.getQuery(str,column);
     	Query q = em.createQuery("select c from Tip c where "+temp);
     	q.setFirstResult(0);
@@ -92,7 +92,7 @@ public class tipsdao {
     
     public long getCount() 
     {
-    	Query q=em.createQuery("select COUNT(*) from Tips");
+    	Query q=em.createQuery("select COUNT(*) from Tip");
     	long count=(long) q.getSingleResult();
     	return count;
     }

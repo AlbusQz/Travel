@@ -83,7 +83,7 @@ public class scenicdao {
     
     public List<Scenic> getSearchScenicList(String str)
     {
-    	String column="INTRO";
+    	String column="CONCAT(INTRO,CITY)";
     	String temp=tool.getQuery(str,column);
     	Query q = em.createQuery("select c from Scenic c where "+temp);
     	System.out.print("select c from Hotel c where "+temp);

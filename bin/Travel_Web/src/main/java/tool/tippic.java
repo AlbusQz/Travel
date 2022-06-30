@@ -57,8 +57,8 @@ public class tippic extends HttpServlet {
 		byte[] buffer = temp.getPic(); 
 		InputStream in = new ByteArrayInputStream(buffer); 
 		BufferedImage img1 = ImageIO.read(in);
-		BufferedImage img2 = new BufferedImage(620, 290, BufferedImage.TYPE_INT_RGB);
-		img2.getGraphics().drawImage(img1, 0, 0, 620, 290, null); 
+		BufferedImage img2 = new BufferedImage(930, 350, BufferedImage.TYPE_INT_RGB);
+		img2.getGraphics().drawImage(img1, 0, 0,930, 350, null); 
 		resp.setHeader("Pragma", "no-cache");
         resp.setHeader("Cache-Control", "no-cache");
         resp.setDateHeader("Expires", 0);
