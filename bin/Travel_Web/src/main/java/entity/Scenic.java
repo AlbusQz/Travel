@@ -28,6 +28,9 @@ public class Scenic implements Serializable {
 	private BigDecimal price;
 
 	private BigDecimal stars;
+	
+	@Lob
+	private byte[] pic;
 
 	//bi-directional many-to-one association to City
 	@ManyToOne
@@ -91,6 +94,14 @@ public class Scenic implements Serializable {
 
 	public void setCity(City city) {
 		this.city = city;
+	}
+	
+	public byte[] getPic() {
+		return this.pic;
+	}
+
+	public void setPic(byte[] pic) {
+		this.pic = pic;
 	}
 
 }

@@ -16,17 +16,18 @@ public class History implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRAVEL_HISTORY_SEQ")
+	@SequenceGenerator(sequenceName = "TRAVEL_HISTORY_SEQ", allocationSize = 1, name = "TRAVEL_HISTORY_SEQ")
 	private long id;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date ctime;
 
 	@Lob
 	private String intro;
 
 	@Column(name="P_ID")
-	private BigDecimal pId;
+	private long pId;
 
 	private BigDecimal price;
 
@@ -68,11 +69,11 @@ public class History implements Serializable {
 		this.intro = intro;
 	}
 
-	public BigDecimal getPId() {
+	public long getPId() {
 		return this.pId;
 	}
 
-	public void setPId(BigDecimal pId) {
+	public void setPId(long pId) {
 		this.pId = pId;
 	}
 
@@ -107,5 +108,7 @@ public class History implements Serializable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	
+	
 
 }

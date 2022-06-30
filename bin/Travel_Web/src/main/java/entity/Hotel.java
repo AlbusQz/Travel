@@ -3,6 +3,7 @@ package entity;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,7 +17,8 @@ public class Hotel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRAVEL_HOTEL_SEQ")
+	@SequenceGenerator(sequenceName = "TRAVEL_HOTEL_SEQ", allocationSize = 1, name = "TRAVEL_HOTEL_SEQ")
 	private long id;
 
 	@Lob
@@ -25,6 +27,9 @@ public class Hotel implements Serializable {
 	private String name;
 
 	private BigDecimal tel;
+	
+	@Lob
+	private byte[] pic;
 
 	//bi-directional many-to-one association to City
 	@ManyToOne
@@ -33,7 +38,7 @@ public class Hotel implements Serializable {
 
 	//bi-directional many-to-one association to Room
 	@OneToMany(mappedBy="hotel")
-	private List<Room> rooms;
+	private List<Room> rooms = new ArrayList<Room>();
 
 	public Hotel() {
 	}
@@ -100,4 +105,11 @@ public class Hotel implements Serializable {
 		return room;
 	}
 
+	public byte[] getPic() {
+		return this.pic;
+	}
+
+	public void setPic(byte[] pic) {
+		this.pic = pic;
+	}
 }

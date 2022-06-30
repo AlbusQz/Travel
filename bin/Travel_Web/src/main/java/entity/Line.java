@@ -17,7 +17,7 @@ public class Line implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String id;
+	private long id;
 
 	private String agency;
 
@@ -27,6 +27,9 @@ public class Line implements Serializable {
 	private String name;
 
 	private BigDecimal price;
+	
+	@Lob
+	private byte[] pic;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="R_TIME")
@@ -49,11 +52,11 @@ public class Line implements Serializable {
 	public Line() {
 	}
 
-	public String getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -120,5 +123,12 @@ public class Line implements Serializable {
 	public void setRcity(City rcity) {
 		this.rcity = rcity;
 	}
+	
+	public byte[] getPic() {
+		return this.pic;
+	}
 
+	public void setPic(byte[] pic) {
+		this.pic = pic;
+	}
 }

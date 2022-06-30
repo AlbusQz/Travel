@@ -1,6 +1,8 @@
 package entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+
 import javax.persistence.*;
 
 import java.util.ArrayList;
@@ -44,9 +46,10 @@ public class City implements Serializable {
 	@OneToMany(mappedBy="rcity")
 	private List<Ticket> rtickets = new ArrayList<Ticket>();
 
+	
 	public City() {
 	}
-
+	
 	public String getName() {
 		return this.name;
 	}

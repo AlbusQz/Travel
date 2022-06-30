@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -18,11 +18,12 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRAVEL_CUSTOMER_SEQ")
+	@SequenceGenerator(sequenceName = "TRAVEL_CUSTOMER_SEQ", allocationSize = 1, name = "TRAVEL_CUSTOMER_SEQ")
 	private long id;
 
-	@Temporal(TemporalType.DATE)
-	private Date ctime;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar ctime;
 
 	private String email;
 
@@ -55,11 +56,11 @@ public class Customer implements Serializable {
 		this.id = id;
 	}
 
-	public Date getCtime() {
+	public Calendar getCtime() {
 		return this.ctime;
 	}
 
-	public void setCtime(Date ctime) {
+	public void setCtime(Calendar ctime) {
 		this.ctime = ctime;
 	}
 

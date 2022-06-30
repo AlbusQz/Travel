@@ -16,7 +16,7 @@ public class Insurance implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String id;
+	private long id;
 
 	private String agency;
 
@@ -27,16 +27,19 @@ public class Insurance implements Serializable {
 
 	private BigDecimal period;
 
-	private BigDecimal price;
+	private BigDecimal  price;
+	
+	@Lob
+	private byte[] pic;
 
 	public Insurance() {
 	}
 
-	public String getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -75,9 +78,21 @@ public class Insurance implements Serializable {
 	public BigDecimal getPrice() {
 		return this.price;
 	}
+	public long getPricel()
+	{
+		return this.price.longValue();
+	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(BigDecimal  price) {
 		this.price = price;
+	}
+	
+	public byte[] getPic() {
+		return this.pic;
+	}
+
+	public void setPic(byte[] pic) {
+		this.pic = pic;
 	}
 
 }
