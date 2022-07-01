@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.hoteldao;
-import entity.Hotel;
+import dao.ticketdao;
+import entity.Ticket;
 
 /**
  * Servlet implementation class addPageServlet
@@ -41,12 +41,12 @@ public class addPageServlet extends HttpServlet {
 		PrintWriter outs=resp.getWriter();
 		HttpSession session = req.getSession();
 		resp.setCharacterEncoding("UTF-8");
-		hoteldao td = new hoteldao();
+		ticketdao td = new ticketdao();
 		long total=td.getCount();
 		int start;
-		if(session.getAttribute("hotelstart")!=null)
+		if(session.getAttribute("ticketstart")!=null)
 		{
-			start=(int) session.getAttribute("hotelstart");
+			start=(int) session.getAttribute("ticketstart");
 			
 		}
 		else
@@ -57,11 +57,11 @@ public class addPageServlet extends HttpServlet {
 		if(start+5<=total)
 		{
 			start+=5;
-			session.setAttribute("hotelstart", start);
+			session.setAttribute("ticketstart", start);
 		}
-		List<Hotel> hotellist=td.getHotelList(start, 5);
-		session.setAttribute("hotellist", hotellist);
-		req.getRequestDispatcher("/hotellist.jsp").forward(req, resp);
+		List<Ticket> ticketlist=td.getTicketList(start, 5);
+		session.setAttribute("ticketlist", ticketlist);
+		req.getRequestDispatcher("/ticketlist.jsp").forward(req, resp);
 	}
 
 	/**

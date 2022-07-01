@@ -15,6 +15,7 @@ import javax.persistence.Query;
 
 import entity.Insurance;
 import entity.Insurance;
+import entity.Insurance;
 import tool.tool;
 
 /**
@@ -34,6 +35,17 @@ public class insurancedao {
     	em=emf.createEntityManager();
     }
 
+    public Insurance findInsurance (long id)
+    {
+    	Insurance customer = null;
+    	
+    	EntityManager em=emf.createEntityManager();
+    	ut=em.getTransaction();
+    	ut.begin();
+    	customer=em.find(Insurance.class, id);
+    	em.close();
+    	return customer;
+    }
     public List<Insurance> getInsuranceList()
     {
     	Query q = em.createQuery("select c from Insurance c");

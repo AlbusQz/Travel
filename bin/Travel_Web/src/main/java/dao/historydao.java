@@ -8,11 +8,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
 
 import entity.*;
 
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 /**
  * Session Bean implementation class historydao
@@ -161,5 +163,14 @@ public class historydao {
     	{
     		e.printStackTrace();
     	}
+    }
+    public List<History> findHistorybyid (long id)
+    {
+    	EntityManager em=emf.createEntityManager();
+    	Query q = em.createQuery("select c from History c where C_ID= "+id);
+    	List<History> his=q.getResultList();
+    	em.close();
+    	
+    	return his;
     }
 }

@@ -221,9 +221,9 @@ public class userManage extends javax.swing.JFrame {
                                     val[i] = MyTable.getValueAt(slrow, i).toString();
                                 int res = AbstractAdmin.getAdmin().executeUpdate("Person", val, origin_val);
                                 if(res != 1)
-                                    JOptionPane.showMessageDialog(null, JOptionPane.ERROR_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "修改失败", "修改错误提示", JOptionPane.ERROR_MESSAGE);
                                 else
-                                    JOptionPane.showMessageDialog(null, JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "修改成功", "修改成功提示", JOptionPane.INFORMATION_MESSAGE);
                             }
 
                         }catch(Exception e) {
@@ -252,14 +252,13 @@ public class userManage extends javax.swing.JFrame {
     					}
     					int res = AbstractAdmin.getAdmin().executeInsert("Person", val);
     					if(res != 1){
-        					JOptionPane.showMessageDialog(null, JOptionPane.ERROR_MESSAGE);
+        					JOptionPane.showMessageDialog(null, "添加失败", "添加失败提示", JOptionPane.ERROR_MESSAGE);
                         }
                         else{
-    					    JOptionPane.showMessageDialog(null, JOptionPane.INFORMATION_MESSAGE);
+    					    JOptionPane.showMessageDialog(null, "添加成功", "添加成功提示", JOptionPane.INFORMATION_MESSAGE);
                         }
     					
     				}catch(Exception e) {
-                        e.printStackTrace();
     					JOptionPane.showMessageDialog(null, e.getMessage(),"添加错误提示", JOptionPane.WARNING_MESSAGE);
     				}
                     finally{
@@ -280,7 +279,7 @@ public class userManage extends javax.swing.JFrame {
                     origin_data[i] = MyTable.getValueAt(delrow, i).toString();
 				int res = AbstractAdmin.getAdmin().executeDelete("Person", origin_data);
 				if(res != 1)
-					JOptionPane.showMessageDialog(null, JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "删除失败", "删除失败提示", JOptionPane.ERROR_MESSAGE);
 				else
 				{
 					model.removeRow(delrow);
@@ -292,7 +291,7 @@ public class userManage extends javax.swing.JFrame {
 //						for(int j = 0;j < 14;j++)
 //							tempt[i][j] = table_data[i][j];
 //					}
-					JOptionPane.showMessageDialog(null, JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null,"删除成功", "删除成功", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 			catch(Exception e) {
@@ -336,7 +335,6 @@ public class userManage extends javax.swing.JFrame {
             }
             model = new DefaultTableModel(table_data, column);
             MyTable.setModel(model);
-			// JOptionPane.showMessageDialog(null, JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e){
 			JOptionPane.showMessageDialog(null, e.getMessage(),"查询错误提示", JOptionPane.WARNING_MESSAGE);
         }

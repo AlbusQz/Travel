@@ -13,6 +13,7 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
+import entity.Scenic;
 import entity.Hotel;
 import entity.Scenic;
 import tool.tool;
@@ -32,6 +33,17 @@ public class scenicdao {
     public scenicdao() {
     	emf = Persistence.createEntityManagerFactory("Travel_Web");
     	em=emf.createEntityManager();
+    }
+    public Scenic findScenic (long id)
+    {
+    	Scenic customer = null;
+    	
+    	EntityManager em=emf.createEntityManager();
+    	ut=em.getTransaction();
+    	ut.begin();
+    	customer=em.find(Scenic.class, id);
+    	em.close();
+    	return customer;
     }
 
     public List<Scenic> getScenicList()

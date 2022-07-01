@@ -75,7 +75,7 @@
                     <li><a href="insurancelist">INSURANCE</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                     <li><a href="staff.html">STAFF</a></li>
-                    <li><a href="login.jsp">LOGIN</a></li>
+                    <li><a href="login.jsp">LOGIN</a></li>\<li><a href="historylist">HISTORY</a></li>
                 </ul>
             </div>
             <!-- ENDS navigation -->

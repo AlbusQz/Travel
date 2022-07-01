@@ -17,7 +17,7 @@ import entity.Line;
 /**
  * Servlet implementation class subPageServlet
  */
-@WebServlet("/subPageServlet")
+@WebServlet("/subLinePageServlet")
 public class subLinePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

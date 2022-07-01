@@ -231,6 +231,7 @@
                     <li><a href="insurancelist">INSURANCE</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                       <li  class="current_page_item"><a href="login.jsp">LOGIN</a></li>
+                      <li><a href="historylist">HISTORY</a></li>
                 </ul>
             </div>
         </div>
@@ -283,7 +284,7 @@
     
         
             <dd>
-                <a href="mobilephonesecuritycodelogin.html" class="login-line">没有账号？点此注册</a>
+                <a href="register.jsp" class="login-line">没有账号？点此注册</a>
             </dd>
     
             <dd>

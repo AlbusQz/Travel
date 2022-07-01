@@ -461,7 +461,7 @@ public abstract class BaseDao {
                 if(i == 2)
                     cityList.add(rs.getDouble(i + 1));
                 else if(i == 6)
-                    cityList.add(rs.getClob(i + 1));
+                   cityList.add(rs.getBlob(i + 1));
                 else
                     cityList.add(rs.getString(i + 1));
             }
@@ -554,8 +554,9 @@ public abstract class BaseDao {
             cityList.clear();
             for(int i = 0;i < this.map.get(table);i++){
                 if(i == 3 || i == 5)
-                    cityList.add(rs.getInt(i  + 1));
-                else if(i == 4)
+                  cityList.add(rs.getInt(i  + 1));
+                else
+                 if(i == 4)
                     cityList.add(rs.getDouble(i + 1));
                 else if(i == 7)
                     cityList.add(rs.getBlob(i + 1));

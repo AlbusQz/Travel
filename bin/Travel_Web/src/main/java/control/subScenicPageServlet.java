@@ -17,7 +17,7 @@ import entity.Scenic;
 /**
  * Servlet implementation class subPageServlet
  */
-@WebServlet("/subPageServlet")
+@WebServlet("/subScenicPageServlet")
 public class subScenicPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

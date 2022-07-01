@@ -1,0 +1,51 @@
+2022-07-01 13:48:35 INFO [登录]管理员 : 100000	登录成功。
+2022-07-01 13:50:04 INFO [向表'Person中'插入如下数据 未提交]
+插入数据 : {id : 3,name : 啊,sex : 男,bday : 2001-01-01,address : 你,nationality : 汉族}
+2022-07-01 13:50:12 INFO [提交]提交事务
+2022-07-01 13:50:21 INFO [删除表'Person'中如下所示的数据 已自动提交]
+原始数据 : {id : 3,name : 啊,sex : 男,bday : 2001-01-01,address : 你,nationality : 汉族}
+2022-07-01 13:50:44 INFO [更新表'Person'中如下所示的数据 已自动提交]
+原始数据 : {id : 370313200201011010,name : 张三,sex : 女,bday : 2002-01-02,address : 山东省青岛市崂山区,nationality : 汉族}
+更新数据 : {id : 370313200201011010,name : 张三,sex : 女,bday : 2002-01-01,address : 山东省青岛市崂山区,nationality : 汉族}
+2022-07-01 13:52:07 INFO [更新表'Tips'中的如下所示的图片 已自动提交]
+原始数据 : D:\Travel\Travel\ClientServer\DeletedPic\Tips_100001_2022-06-30.jpg
+更新数据 : C:\Users\Albus-Qz\Desktop\Tips_photo_100001_2022-06-30.jpg
+2022-07-01 13:52:09 INFO [提交]提交事务
+2022-07-01 13:52:58 INFO [更新表'Tips'中的如下所示的图片 已自动提交]
+原始数据 : D:\Travel\Travel\ClientServer\DeletedPic\Tips_100001_2022-06-30.jpg
+更新数据 : D:\图片.壁纸\na1.jpg
+2022-07-01 13:55:07 INFO [登录]管理员 : 100000	登录成功。
+2022-07-01 13:56:26 INFO [向表'Person中'插入如下数据 未提交]
+插入数据 : {id : 370212000000000000,name : 随意,sex : 男,bday : 2001-01-01,address : test,nationality : 汉族}
+2022-07-01 13:56:34 INFO [提交]提交事务
+2022-07-01 13:57:35 INFO [删除表'Person'中如下所示的数据 已自动提交]
+原始数据 : {id : 3,name : 随意,sex : 男,bday : 2001-01-01,address : test,nationality : 汉族}
+2022-07-01 13:59:35 INFO [登录]管理员 : 100000	登录成功。
+2022-07-01 14:00:47 INFO [向表'Person中'插入如下数据 未提交]
+插入数据 : {id : 3,name : 测试,sex : 男,bday : 2000-01-01,address : 测试,nationality : 测试}
+2022-07-01 14:00:55 INFO [提交]提交事务
+2022-07-01 14:01:14 INFO [删除表'Person'中如下所示的数据 已自动提交]
+原始数据 : {id : 3,name : 测试,sex : 男,bday : 2000-01-01,address : 测试,nationality : 测试}
+2022-07-01 14:01:36 INFO [更新表'Person'中如下所示的数据 已自动提交]
+原始数据 : {id : 370313200201011010,name : 张三,sex : 女,bday : 2002-01-01,address : 山东省青岛市崂山区,nationality : 汉族}
+更新数据 : {id : 370313200201011010,name : 张三,sex : 女,bday : 2002-01-02,address : 山东省青岛市崂山区,nationality : 汉族}
+2022-07-01 14:02:53 INFO [更新表'Tips'中的如下所示的图片 已自动提交]
+原始数据 : D:\Travel\Travel\ClientServer\DeletedPic\Tips_100001_2022-06-30.jpg
+更新数据 : C:\Users\Albus-Qz\Desktop\pic\test.jpg
+2022-07-01 14:06:23 INFO [登录]管理员 : 100000	登录成功。
+2022-07-01 14:07:29 INFO [向表'Person中'插入如下数据 未提交]
+插入数据 : {id : 3,name : 测试,sex : 男,bday : 2022-01-01,address : 测试,nationality : 测}
+2022-07-01 14:07:36 INFO [提交]提交事务
+2022-07-01 14:07:53 INFO [删除表'Person'中如下所示的数据 已自动提交]
+原始数据 : {id : 3,name : 测试,sex : 男,bday : 2022-01-01,address : 测试,nationality : 测}
+2022-07-01 14:08:20 INFO [更新表'Person'中如下所示的数据 已自动提交]
+原始数据 : {id : 370313200201011010,name : 张三,sex : 女,bday : 2002-01-02,address : 山东省青岛市崂山区,nationality : 汉族}
+更新数据 : {id : 370313200201011010,name : 张三,sex : 女,bday : 2002-01-01,address : 山东省青岛市崂山区,nationality : 汉族}
+2022-07-01 14:09:47 INFO [更新表'Tips'中的如下所示的图片 已自动提交]
+原始数据 : D:\Travel\Travel\ClientServer\DeletedPic\Tips_100001_2022-06-30.jpg
+更新数据 : C:\Users\Albus-Qz\Desktop\pic\tip\04dcdc33c895d1432fcec87775f082025baf07a0.jpg
+2022-07-01 14:10:21 INFO [更新表'History'中如下所示的数据 已自动提交]
+原始数据 : {id : 100005,c_id : 100002,type : Insurance,p_id : 10000,ctime : 2022-06-30 10:09:17.507,price : 180.0,state : 已支付未发货,intro : }
+更新数据 : {id : 100005,c_id : 100002,type : Insurance,p_id : 10000,ctime : 2022-06-30 10:09:17.507,price : 180.0,state : 已支付已发货,intro : }
+2022-07-01 14:10:24 INFO [提交]提交事务
+2022-07-01 15:20:37 INFO [登录]管理员 : 100000	登录成功。

@@ -163,7 +163,6 @@ public class dataAnalysis extends javax.swing.JFrame {
 		try {
 			chart = new BarChart();
 		} catch (Exception e) {
-			e.printStackTrace();
             JOptionPane.showMessageDialog(null, e.getMessage(), "错误提示", JOptionPane.ERROR_MESSAGE);
 		}
         
@@ -179,7 +178,6 @@ public class dataAnalysis extends javax.swing.JFrame {
 		try {
 			chart = new PieChart_Insurance();
 		} catch (Exception e) {
-			e.printStackTrace();
             JOptionPane.showMessageDialog(null, e.getMessage(), "错误提示", JOptionPane.ERROR_MESSAGE);
 		}
 		JPanel jpanel = chart.getChartPanel();
@@ -194,7 +192,6 @@ public class dataAnalysis extends javax.swing.JFrame {
 		try {
 			chart = new PieChart_Order();
 		} catch (Exception e) {
-			e.printStackTrace();
             JOptionPane.showMessageDialog(null, e.getMessage(), "错误提示", JOptionPane.ERROR_MESSAGE);
 		}
 		JPanel jpanel = chart.getChartPanel();
@@ -209,7 +206,6 @@ public class dataAnalysis extends javax.swing.JFrame {
 		try {
 			chart = new TimeSeriesChart();
 		} catch (Exception e) {
-			e.printStackTrace();
             JOptionPane.showMessageDialog(null, e.getMessage(), "错误提示", JOptionPane.ERROR_MESSAGE);
 		}
 		JPanel jpanel = chart.getChartPanel();

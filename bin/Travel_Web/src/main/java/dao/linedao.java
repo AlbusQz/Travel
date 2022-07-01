@@ -14,6 +14,7 @@ import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
 import entity.Line;
+import entity.Line;
 import entity.Ticket;
 import tool.tool;
 
@@ -32,6 +33,17 @@ public class linedao {
     public linedao() {
     	emf = Persistence.createEntityManagerFactory("Travel_Web");
     	em=emf.createEntityManager();
+    }
+    public Line findLine (long id)
+    {
+    	Line customer = null;
+    	
+    	EntityManager em=emf.createEntityManager();
+    	ut=em.getTransaction();
+    	ut.begin();
+    	customer=em.find(Line.class, id);
+    	em.close();
+    	return customer;
     }
 
     public List<Line> getLineList()

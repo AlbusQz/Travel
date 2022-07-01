@@ -17,7 +17,7 @@ import entity.Ticket;
 /**
  * Servlet implementation class subPageServlet
  */
-@WebServlet("/subPageServlet")
+@WebServlet("/subHotelPageServlet")
 public class subHotelPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -411,9 +411,9 @@ public class mulManage extends javax.swing.JFrame {
                                 }
                                 int res = AbstractAdmin.getAdmin().executeUpdate(table, val, origin_val);
                                 if(res != 1)
-                                    JOptionPane.showMessageDialog(null, JOptionPane.ERROR_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "修改失败", "修改错误提示", JOptionPane.ERROR_MESSAGE);
                                 else
-                                    JOptionPane.showMessageDialog(null, JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "修改成功", "修改成功提示", JOptionPane.INFORMATION_MESSAGE);
                             } catch(Exception e){
                                 JOptionPane.showMessageDialog(null, e.getMessage(),"修改错误提示", JOptionPane.WARNING_MESSAGE);
                             }
@@ -448,9 +448,9 @@ public class mulManage extends javax.swing.JFrame {
                         }
                         int res = AbstractAdmin.getAdmin().executeInsert(table, val);
                         if(res != 1)
-                            JOptionPane.showMessageDialog(null, JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "添加失败", "添加错误提示", JOptionPane.ERROR_MESSAGE);
                         else
-                            JOptionPane.showMessageDialog(null, JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "添加成功", "添加成功提示", JOptionPane.INFORMATION_MESSAGE);
 
                     } catch(Exception e){
                         JOptionPane.showMessageDialog(null, e.getMessage(),"添加错误提示", JOptionPane.WARNING_MESSAGE);
@@ -482,10 +482,10 @@ public class mulManage extends javax.swing.JFrame {
                     res = AbstractAdmin.getAdmin().executeDelete(table, origin_data);
                 }
                 if(res != 1)
-                    JOptionPane.showMessageDialog(null, JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "删除失败", "删除错误提示", JOptionPane.ERROR_MESSAGE);
                 else{
                     models[i].removeRow(delrow);
-                    JOptionPane.showMessageDialog(null, JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "删除成功", "删除成功提示", JOptionPane.INFORMATION_MESSAGE);
                 }
             } catch(Exception e){
                 JOptionPane.showMessageDialog(null, e.getMessage(),"删除错误提示", JOptionPane.WARNING_MESSAGE);
@@ -499,7 +499,7 @@ public class mulManage extends javax.swing.JFrame {
         if(slrow >= 0){                                 //necessary
             try{
 
-                Image image = AbstractAdmin.getAdmin().previewPic("Tips", list, slrow);
+                Image image = AbstractAdmin.getAdmin().previewPic(map.get(i), list, slrow);
                 if(image == null){
                     JOptionPane.showMessageDialog(null,"图片为空，无法查看","提示",JOptionPane.INFORMATION_MESSAGE);
                     return;
@@ -534,7 +534,7 @@ public class mulManage extends javax.swing.JFrame {
                                 try {
                                     String save_path = jfilechooser.getSelectedFile().toString();
                                     path = save_path + "\\Tips_photo_" + list.get(slrow).getC_ID() + "_" + list.get(slrow).getCtime() + ".jpg";
-                                    AbstractAdmin.getAdmin().savePreviewImage("Tips", list, slrow, path);
+                                    AbstractAdmin.getAdmin().savePreviewImage(map.get(i), list, slrow, path);
                                 } 
                                 catch (Exception e0) {
                                     JOptionPane.showMessageDialog(null, e0.getMessage(),"错误提示", JOptionPane.WARNING_MESSAGE);
@@ -573,7 +573,7 @@ public class mulManage extends javax.swing.JFrame {
                     String photo_path = jfilechooser.getSelectedFile().getAbsolutePath().toString();
                     int res = AbstractAdmin.getAdmin().executeUpdate("Tips", this.list, slrow, photo_path);
                     if(res != 1)
-                        JOptionPane.showMessageDialog(null, JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "插入操作未完成", "失败", JOptionPane.ERROR_MESSAGE);
                     else{
                         JOptionPane.showMessageDialog(null,"插入操作完成","成功",JOptionPane.INFORMATION_MESSAGE);
                         queryButtons[3].doClick();
@@ -581,7 +581,7 @@ public class mulManage extends javax.swing.JFrame {
                 }
 		        //落实之后pic列内容才发生变化 String
             } catch(Exception e){
-                JOptionPane.showMessageDialog(null, e.getMessage(),"修改错误提示", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, e.getMessage(),"插入错误提示", JOptionPane.WARNING_MESSAGE);
             }
         }
 
@@ -761,7 +761,6 @@ public class mulManage extends javax.swing.JFrame {
                 models[5] = new DefaultTableModel(table_data5, column5);
                 jTables[5].setModel(models[5]);
             } catch (Exception e){
-                e.printStackTrace();
     			JOptionPane.showMessageDialog(null, e.getMessage(),"查询错误提示", JOptionPane.WARNING_MESSAGE);
             }
     		break;
@@ -821,7 +820,6 @@ public class mulManage extends javax.swing.JFrame {
                 new mulManage().setVisible(true);
             }
         });
-    	//new culManage().setVisible(true);
     }
                
 }

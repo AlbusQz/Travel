@@ -30,6 +30,17 @@ public class hoteldao {
     	emf = Persistence.createEntityManagerFactory("Travel_Web");
     	em=emf.createEntityManager();
     }
+    public Hotel findHotel (long id)
+    {
+    	Hotel customer = null;
+    	
+    	EntityManager em=emf.createEntityManager();
+    	ut=em.getTransaction();
+    	ut.begin();
+    	customer=em.find(Hotel.class, id);
+    	em.close();
+    	return customer;
+    }
     public List<Hotel> getHotelList()
     {
     	Query q = em.createQuery("select c from Hotel c");

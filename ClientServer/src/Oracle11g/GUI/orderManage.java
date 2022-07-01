@@ -186,8 +186,10 @@ public class orderManage extends javax.swing.JFrame {
         int slrow = MyTable.getSelectedRow();
         if(slrow >= 0){
             String[] origin_val = new String[8];
-            for(int i = 0;i < 8;i++)
-                origin_val[i] = MyTable.getValueAt(slrow, i).toString();
+            for(int i = 0;i < 8;i++){
+                Object t = MyTable.getValueAt(slrow, i);
+                origin_val[i] = t == null ? "" : t.toString();
+            }
             MyTable.addKeyListener(new KeyAdapter() {
                 public void keyPressed(KeyEvent ke) {
                     if(ke.getKeyChar() == KeyEvent.VK_ENTER && isChange_edit) {
@@ -195,17 +197,18 @@ public class orderManage extends javax.swing.JFrame {
                             int current_slrow = MyTable.getSelectedRow();
                             if(current_slrow >= 0 && current_slrow == slrow) {
                                 String []val = new String[8];
-                                for(int i = 0;i < 8; i++)
-                                    val[i] = MyTable.getValueAt(slrow, i).toString();
+                                for(int i = 0;i < 8; i++){
+                                    Object t = MyTable.getValueAt(slrow, i);
+                                    val[i] = t == null ? "" : t.toString();
+                                }
                                 int res = AbstractAdmin.getAdmin().executeUpdate("History", val, origin_val);
                                 if(res != 1)
-                                    JOptionPane.showMessageDialog(null, JOptionPane.ERROR_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "修改失败", "修改错误提示", JOptionPane.ERROR_MESSAGE);
                                 else
-                                    JOptionPane.showMessageDialog(null, JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "修改成功", "修改成功提示", JOptionPane.INFORMATION_MESSAGE);
                             }
 
                         }catch(Exception e) {
-                            e.printStackTrace();
                             JOptionPane.showMessageDialog(null, e.getMessage(),"修改错误提示", JOptionPane.WARNING_MESSAGE);
                         }
                         finally{

@@ -1,0 +1,9 @@
+2022-07-01 13:56:49 ERROR [删除表'Person'中数据错误]For input string: "370212000000000000"
+2022-07-01 13:57:02 ERROR [删除表'Person'中数据错误]For input string: "370212000000000000"
+2022-07-01 13:57:19 ERROR [删除表'Person'中数据错误]For input string: "3702122001111111"
+2022-07-01 13:58:09 ERROR [插入表'Person'中数据错误]ORA-00001: 违反唯一约束条件 (TRAVELTEST.PK_PERSON_ID)
+
+2022-07-01 14:03:09 ERROR [获取表'Ticket'出错]ORA-00932: 数据类型不一致: 应为 NUMBER, 但却获得 BLOB
+
+2022-07-01 15:21:15 ERROR [获取表'Scenic'出错]ORA-00932: 数据类型不一致: 应为 NUMBER, 但却获得 BLOB
+

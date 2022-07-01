@@ -13,6 +13,7 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
+import entity.Ticket;
 import entity.Hotel;
 import entity.Ticket;
 import tool.tool;
@@ -33,7 +34,17 @@ public class ticketdao {
     	emf = Persistence.createEntityManagerFactory("Travel_Web");
     	em=emf.createEntityManager();
     }
-
+    public Ticket findTicket (long id)
+    {
+    	Ticket customer = null;
+    	
+    	EntityManager em=emf.createEntityManager();
+    	ut=em.getTransaction();
+    	ut.begin();
+    	customer=em.find(Ticket.class, id);
+    	em.close();
+    	return customer;
+    }
     public List<Ticket> getTicketList()
     {
     	Query q = em.createQuery("select c from Ticket c");
